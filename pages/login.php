@@ -50,6 +50,7 @@
                         </label>
                     </div> -->
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button> <br>
+                    <p align='center'>Belum punya akun ? Silahkan Register <a href="register.php">Disini</a></p>
                     <div class="form-group" align='center'>                    
                   &copy; 2020 - Sumber Ayu Salon <br> <a href="#">Indra Purnama</a>
                 </div>

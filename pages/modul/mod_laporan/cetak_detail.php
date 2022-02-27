@@ -96,7 +96,9 @@ if (!empty($query))
 		$pdf->Cell(2,1,'',2,0,'L');
 		$pdf->Cell(3,1,'Harga Paket  ',2,0,'L');
 		$pdf->Cell(2,1,':',2,0,'C');
-		$pdf->Cell(3,1,'Rp '.$r['harga_paket'].'',2,0,'L');
+
+        $harga_paket = number_format($r['harga_paket'],0,",",".");
+		$pdf->Cell(3,1,'Rp '.$harga_paket.'',2,0,'L');
 		$pdf->Ln();
 		$pdf->Cell(2,1,'',2,0,'L');
 		$pdf->Cell(3,1,'Cashback  ',2,0,'L');
@@ -123,12 +125,18 @@ if (!empty($query))
 		$nilai     = ($diskon/100)*$harga;
 		$total_harga = $r['harga_paket']-$nilai;
 
-		$pdf->Cell(3,1,'Rp '.$nilai.'',2,0,'L');
+
+        $cashback = number_format($nilai,0,",",".");
+
+		$pdf->Cell(3,1,'Rp '.$cashback.'',2,0,'L');
 		$pdf->Ln();
 		$pdf->Cell(2,1,'',2,0,'L');
 		$pdf->Cell(3,1,'Harga Setelah Cashback  ',2,0,'L');
 		$pdf->Cell(2,1,':',2,0,'C');
-		$pdf->Cell(3,1,'Rp '.$total_harga.'',2,0,'L');
+
+		$after_cashback = number_format($total_harga,0,",",".");
+
+		$pdf->Cell(3,1,'Rp '.$after_cashback.'',2,0,'L');
 		$pdf->Ln();
 		$pdf->Ln();
 
@@ -158,13 +166,14 @@ if (!empty($query))
 		$no++;
 	
 		
+        $harga_produk = "Rp. " . number_format($hasil['harga_produk'],0,",",".");
 		
 		 $pdf->SetFont('Arial','',12);
 		//$pdf->Cell(2.2,1,$hasil[kode_buku],1,0,'C');
 		$pdf->Cell(2,1,$no.'.',1,0,'C');
 		$pdf->Cell(6,1,$hasil['kategori'],1,0,'L');
 		$pdf->Cell(6,1,$hasil['produk'],1,0,'L');
-		$pdf->Cell(6,1,$hasil['harga_produk'],1,0,'L');
+		$pdf->Cell(6,1,$harga_produk,1,0,'L');
 	
 		$pdf->Ln();
 		

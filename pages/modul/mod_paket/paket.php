@@ -72,6 +72,7 @@ echo"
         $tampil = mysql_query("SELECT * FROM `paket` ORDER BY id_paket DESC");  
         $no = 1;
         while($r=mysql_fetch_array($tampil)){
+        $hasil_rupiah = "Rp. " . number_format($r[harga],0,",",".");
         echo"
             <tr>
                 <td>$no</td>
@@ -79,7 +80,7 @@ echo"
                 <td>$r[nama_paket]</td>
                 <th><img src='upload/paket/$r[gambar]' border='3' height='100' width='100'></img></th>
                 <td>$r[deskripsi]</td>                
-                <td>$r[harga]</td>
+                <td width='120px'>$hasil_rupiah</td>
                 <td width='20%'>
                 <a href='?module=paket&act=detailpaket&id=$r[id_paket] 'class='btn btn-success btn-xs'><i class='fa fa-pencil'></i> Detail</a>
                 <a href='?module=paket&act=editpaket&id=$r[id_paket] 'class='btn btn-info btn-xs'><i class='fa fa-pencil'></i> Edit</a>
@@ -177,13 +178,14 @@ echo"
                                   ORDER BY paket.id_paket DESC");  
             $no = 1;
             while($r=mysql_fetch_array($tampil)){
+            $hasil_rupiah = "Rp. " . number_format($r[harga],0,",",".");
             echo"
                 <tr>
                     <td>$no</td>
                     <td>$r[id_detail]</td>
                     <td>$r[nama_paket]</td>
                     <td>$r[produk]</td>
-                    <td>$r[harga]</td>
+                    <td width='120px'>$hasil_rupiah</td>
                     <td><img src='upload/produk/$r[gambar]' border='3' height='100' width='100'></img></td>
                     <td>
                     <a href='$aksi?module=paket&act=hapus_detail&id=$r[id_detail]&id_paket=$r[id_paket]&id_produk=$r[id_produk]' class='btn btn-danger btn-xs' onClick=\"return confirm('Yakin ingin hapus data ? Data yang dihapus tidak dapat dipulihkan !')\"><i class='fa fa-trash-o'></i> Hapus</a>

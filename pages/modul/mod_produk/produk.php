@@ -59,9 +59,12 @@ echo"
         <tbody>";
         $tampil = mysql_query("SELECT * FROM `produk`
                               INNER JOIN `kategori` ON `produk`.`id_kategori` = `kategori`.`id_kategori`
-                              ORDER BY id_produk DESC");  
+                              ORDER BY id_produk DESC"); 
+  
         $no = 1;
         while($r=mysql_fetch_array($tampil)){
+
+        $hasil_rupiah = "Rp. " . number_format($r[harga],0,",",".");
         echo"
             <tr>
                 <td>$no</td>
@@ -70,7 +73,7 @@ echo"
                 <td>$r[kategori]</td>
                 <th><img src='upload/produk/$r[gambar]' border='3' height='100' width='100'></img></th>
                 <th>$r[deskripsi]</th>
-                <th>$r[harga]</th>
+                <td width='120px'>$hasil_rupiah</td>
                 <td><a href='?module=produk&act=editproduk&id=$r[id_produk] 'class='btn btn-info btn-xs'><i class='fa fa-pencil'></i> Edit</a>
                 <a href='$aksi?module=produk&act=hapus&id=$r[id_produk]' class='btn btn-danger btn-xs' onClick=\"return confirm('Yakin ingin hapus data ? Data yang dihapus tidak dapat dipulihkan !')\"><i class='fa fa-trash-o'></i> Hapus</a>
                 </td>
